@@ -1,0 +1,44 @@
+<h2 class="title">List of Names</h2>
+<table class="name-table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="active-row" *ngFor="let person of people">
+            <td>{{ person.id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.email }}</td>
+            <td>
+                <button *ngIf="person.id !== undefined" (click)="removePerson(person.id)">Delete</button>
+            </td>
+            
+        </tr>
+    </tbody>
+</table>
+
+<form (submit)="addPerson(newName.value, newEmail.value)">
+    <label>
+        New Name:
+        <input type="text" #newName required>
+    </label>
+    <br>
+    <label>
+        New Email:
+        <input type="email" #newEmail required>
+    </label>
+    <br>
+    <button type="submit">Add Name and Email</button>
+</form>
